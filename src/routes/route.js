@@ -35,4 +35,59 @@ router.get('/student-details/:name', function(req, res){
     res.send('Dummy response')
 })
 
+
+//first problem
+router.get('/GET/movies', function (req, res){
+    let movies=['KGF Chapter 2', 'Pawankhind', 'A Quiet Place part 2','Eternals']
+    res.send(movies)
+})
+
+
+//second problem
+router.get('/GET/movies/:i', function (req, res){
+    let movies=['KGF Chapter 2', 'Pawankhind', 'A Quiet Place part 2','Eternals']
+    
+    let requestParams = req.params  //  
+    let value=Object.values(requestParams)   
+    res.send(movies[value])      
+})
+
+//third problem
+router.get('/GET/movie/:i', function (req, res){
+    let movies=['KGF Chapter 2', 'Pawankhind', 'A Quiet Place part 2','Eternals']
+    
+    let requestParams = req.params  //
+    
+    let value=Object.values(requestParams)
+    
+    if(value > movies.length ||  value == movies.length){
+        res.send("enter valid index number")
+    }else{
+    res.send(movies[value])
+    }    
+})
+
+
+//forth problem
+router.get('/GET/films', function (req, res){
+    let movies=[{'id': 1, 'name':'KGF Chapter 2' }, {'id': 2, 'name':'Pawankhind' }, 
+    {'id': 1, 'name':'A Quiet Place part 2' }, {'id': 1, 'name':'Eternals' }]  
+     res.send(movies) 
+})
+
+
+//fifth problem
+router.get('/GET/films/:filmId', function(req,res){
+    let movies=[{'id': 1, 'name':'KGF Chapter 2' }, {'id': 2, 'name':'Pawankhind' }, 
+    {'id': 3, 'name':'A Quiet Place part 2' }, {'id': 4, 'name':'Eternals' }]
+    
+    let value = req.params.filmId 
+
+    if(value > movies.length ){
+        res.send("No movie exists with this id")
+    }else{
+    res.send(movies[value-1])
+    } 
+})
+
 module.exports = router;
