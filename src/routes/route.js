@@ -2,7 +2,7 @@ const express = require('express');
 const abc = require('../introduction/intro')
 const router = express.Router();
 const _=require('lodash')
-const app = express.Router()
+
 
 router.get('/test-me', function (req, res) {
     console.log('My batch is', abc.name)
