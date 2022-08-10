@@ -121,5 +121,99 @@ router.post("/players", function(req, res){
     
 })
 
+//problem two(optional)
+
+let playersId =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ],
+           "BookingId" : {
+            "bookingNumber": 1,
+             "sportId" : "",
+             "centerId"  : "" ,
+            "type": "private",
+            "slot": '16286598000000',
+            "bookedOn": '31/08/2021',
+            "bookedFor": '01/09/2021'
+           }
+           
+       },
+       {
+           "name": "gopal",
+           "dob": "1/09/1995",
+           "gender": "male",
+           "city": "delhi",
+           "sports": ["soccer"],
+           "BookingId" : {
+            "bookingNumber": 2,
+             "sportId" : "",
+             "centerId"  : "" ,
+            "type": "private",
+            "slot": '16286598000000',
+            "bookedOn": '31/08/2021',
+            "bookedFor": '01/09/2021'
+           }
+       },
+       {
+           "name": "lokesh",
+           "dob": "1/1/1990",
+           "gender": "male",
+           "city": "mumbai",
+           "sports": [
+               "soccer"
+           ],
+           "BookingId" : []
+        },
+        {
+            "name": "akhilesh",
+            "dob": "1/1/1990",
+            "gender": "male",
+            "city": "mumbai",
+            "sports": [
+                "soccer"
+            ],
+            "BookingId" : []
+         },
+         {
+            "name": "raj",
+            "dob": "1/1/1990",
+            "gender": "male",
+            "city": "mumbai",
+            "sports": [
+                "soccer"
+            ],
+            "BookingId" : []
+         }
+    ]
+
+
+    router.post('/players/:playerName/bookings/:bookingId', function(req, res){
+        let name=req.params.playerName
+        let bookingIdNumber=req.params.bookingId
+        let newBooking=req.body
+
+        for (let i=0; i<playersId.length; i++){
+            if(playersId[i].name==name){
+                
+                if(playersId[i].BookingId !==[] && playersId[i].BookingId.bookingNumber==bookingIdNumber ){
+                    return res.send('booking id exists.')
+                }
+                if(playersId[i].BookingId ==""){
+                    playersId[i].BookingId.push(newBooking)
+                    //console.log(playersId)
+                    return res.send(playersId)
+                }
+                
+            }
+            //console.log(playersId)
+        }return res.send('player does not exists.')
+
+    })
 
 module.exports = router;
