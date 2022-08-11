@@ -216,4 +216,56 @@ let playersId =
 
     })
 
+
+//Post API Assignment 2 voting
+    let persons=[
+        {
+            "name": "raj",
+            "age": 18,
+            "votingStatus": false
+        },
+
+        {
+            "name": "sunil",
+            "age": 57,
+            "votingStatus": false
+        },
+
+        {
+            "name":"sanket",
+            "age":24,
+            "votingStatus":false
+        },
+
+        {
+            "name":"pratik",
+            "age":15,
+            "votingStatus":false
+        },
+
+        {
+            "name":"vedant",
+            "age":13,
+            "votingStatus":false
+        }
+
+    ]
+
+    router.post('/voting', function(req, res){
+        let age=req.query.age
+        
+        let elegiPerson=[]
+        for (let i=0; i<persons.length; i++){
+            if(persons[i].age>=age){
+                persons[i].votingStatus=true
+                elegiPerson.push(persons[i])
+            }
+        }if(elegiPerson.length==0){
+            return res.send('No data to show.')
+        }else{
+        return res.send(elegiPerson)
+        }
+    })
+
+
 module.exports = router;
