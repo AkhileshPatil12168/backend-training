@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const route = require('./routes/route.js');
 const { default: mongoose } = require('mongoose');
 const app = express();
+const moment= require('moment')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +21,20 @@ mongoose.connect("mongodb+srv://functionup-cohort:G0Loxqc9wFEGyEeJ@cluster0.rzot
 //         next();
 //   }
 //   );
+
+/////////////////////////////////  ASSIGNMENT ////////////////////////////////////////
   
+app.use(
+    (req, res, next)=>{
+        const date = moment().format('DD-MM-YYYY, HH:mm:ss')
+        const IP= req.ip
+        const url=req.originalUrl
+        console.log(date+"  "+IP+"  "+url)
+        next()
+    }
+)
+
+////////////////////////////////////////////////////////////////////////////////
 
 app.use('/', route);
 
