@@ -21,7 +21,6 @@ const loginUser = async (req, res) => {
 
 }
 //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzBhMTRkNGUzYTgyNjdmNDY5ZWYzYmIiLCJpYXQiOjE2NjE2MDg2MzB9.SExQgWKqn631EF8BcozJAF4fXDKSQSIWJCGuyd0eXmU
-
 const checkToken = async (req, res) => {
 
   const userId = req.params.userId
