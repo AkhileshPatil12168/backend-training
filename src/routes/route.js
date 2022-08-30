@@ -5,7 +5,7 @@ const router = express.Router();
 // const BookController= require("../controllers/bookController")
 // const commonMW = require ("../middlewares/commonMiddlewares")
 
-router.get("/test-me", function (req, res) {
+router.get("/hello", function (req, res) {
     res.send("My first ever api!")
 })
 
