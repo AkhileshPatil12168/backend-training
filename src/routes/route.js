@@ -4,7 +4,7 @@ const userController= require("../controllers/newUserController")
 const mid1=require('../middleware/mid1')
 
 
-router.get("/test-me", mid1.mid1, function (req, res) {
+router.get("/test-me",  function (req, res) {
     res.send("My first ever api!")
 })
 
